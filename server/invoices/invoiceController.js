@@ -48,5 +48,19 @@ module.exports = {
       if (err) { return res.send(err); }
       res.send(result);
     }, {rejectUnauthorized: false});
+  },
+  queryById: function(req, res, next) {
+    console.log(req.query.idList);
+    var queryParams = {
+      sessionId: req.query.sessionId,
+      idList: {
+        id: req.query.idList
+      }
+    }
+    client.queryInvoiceById(queryParams, function(err, result) {
+      if (err) { return res.send(err); }
+      res.send(result);
+    }, {rejectUnauthorized: false});
+    //res.send('queryById!');
   }
 }

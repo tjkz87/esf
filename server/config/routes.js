@@ -6,4 +6,5 @@ module.exports = function(app, express) {
   app.post('/api/users/session', userController.createSession);
 
   app.get('/api/invoices/query', invoiceController.query);
+  app.get('/api/invoices/querybyid', invoiceController.queryById);
 };
