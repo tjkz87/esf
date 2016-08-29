@@ -5,6 +5,7 @@ var client;
 
 soapClient(function(cl) {
   client = cl;
+  console.log('SessionService SOAP client loaded.')
 });
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
       hasTokenCreated: false
     }));
     // call SOAP API
-    client.SessionService.SessionServicePort.getUser(req.body.data, function(err, result) {
+    client.getUser(req.body.data, function(err, result) {
       if (err) { return res.send(err); }
       res.send(result);
     }, {rejectUnauthorized: false});
@@ -37,7 +38,7 @@ module.exports = {
       hasTokenCreated: false
     }));
     // call SOAP API
-    client.SessionService.SessionServicePort.createSession(req.body.data, function(err, result) {
+    client.createSession(req.body.data, function(err, result) {
       if (err) { return res.send(err); }
       res.send(result);
     }, {rejectUnauthorized: false});
